@@ -1,10 +1,14 @@
+"use client"; 
 
+import Greeting from "@/components/main/greeting";
+import SignOut from "@/components/universal/signout";
 
 export default function Main(){
 
     return(
         <main>
-            You logged in!!
+            <SignOut />
+            <Greeting />
         </main>
     )
 }
