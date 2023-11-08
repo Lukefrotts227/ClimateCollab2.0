@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Climate Collab',
-  description: 'My Climate Collaborator',
+  description: 'Climate Collaborator',
 }
 
 export default function RootLayout({ children }) {
