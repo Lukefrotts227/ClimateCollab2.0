@@ -8,3 +8,4 @@ My redoing of the climate collab project. Which was my first solo hackathon proj
 
 # What I have learned 
 - Proper user authentication is something I am including in this application
+- How to seperate logic and code into files to be added in to the main app

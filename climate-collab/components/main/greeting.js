@@ -9,7 +9,7 @@ const Greeting = () => {
         router.push('/'); 
         return(
             <div>
-
+                Negative
             </div>
             )
     }
