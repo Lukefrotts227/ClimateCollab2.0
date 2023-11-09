@@ -10,7 +10,6 @@ export const fetchUserData = async () =>{
 }
 
 
-
 export const getUser = async (req) =>{
 
     const session = await getSession({ req }); 
@@ -23,5 +22,4 @@ export const getUser = async (req) =>{
     }
     return null; 
 }
-
 
