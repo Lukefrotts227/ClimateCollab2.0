@@ -1,5 +1,4 @@
 import { signOut } from "next-auth/react";
-import Link from 'next/link'; 
 import { useRouter } from "next/navigation";
 
 const SignOut = () =>{
@@ -7,6 +6,7 @@ const SignOut = () =>{
     const exitFun = () =>{
         router.push('/'); 
         signOut(); 
+        sessionStorage.clear(); 
     }
     return(
         <div>

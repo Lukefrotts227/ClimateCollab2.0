@@ -13,6 +13,7 @@ export const metadata = {
   description: 'Climate Collaborator',
 }
 
+
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions)
   return (
