@@ -1,5 +1,4 @@
-const descript = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; 
-
+const descript = "The Climate Collab, on the surface, is a simple carbon emission calculator. While this is true, it can do much more. To combat climate change, we need to work together, so the Climate Collab takes into account the data of all users. It adjusts for the average and shows improvement based on the data the user enters. Furthermore, it outputs the data in a format that users can understand. More features will be added."; 
 
 
 export { descript }; 
