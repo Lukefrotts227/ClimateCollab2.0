@@ -62,4 +62,7 @@ model BasicInfo{
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   userId   String    @db.ObjectId
   age      Int
+  
 }
+
+// I may have to treat them as update entrys based on time data. This may make it difficult to scale. perhaps a weekly model is best.
