@@ -9,3 +9,8 @@ My redoing of the climate collab project. Which was my first solo hackathon proj
 # What I have learned 
 - Proper user authentication is something I am including in this application
 - How to seperate logic and code into files to be added in to the main app
+
+# Challenges 
+- The algorithm that is used to calculate the emissions needs to be better than the hacakthon version 
+- I need to be able to adjust for the average. and handle lack of inputs just as before
+- I need to find a way to better handle data over time
