@@ -6,9 +6,12 @@ const BasicInfo = () => {
     const [milesPer, setMilesPer] = useState(-1);
 
     const handleFocus = (inp) =>{
-        
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
+        setFocusStore(updatedFocusStore); 
     }
     const handleBlur = (inp) =>{
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
+        setFocusStore(updatedFocusStore)
          
     }
     
@@ -24,9 +27,10 @@ const BasicInfo = () => {
                 </div>
                 <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400">
                     <form className='flex flex-col gap-3 items-center justify-center'>
+                    {focusStore[0] && <p>the type of car driven can determine the carbon emissions</p>}     
                         <div className="flex flex-col">
                             <label>What kind of Car Do You Drive?</label>
-                            <select onFocus={handleFocus(0)} onBlur={handleBlur(0)}>
+                            <select onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
                                 <option></option>
                                 <option></option>
                                 <option></option>
@@ -50,11 +54,15 @@ const MainInfo = () => {
     const [focusStore, setFocusStore] = useState([false, false]); 
 
     const handleFocus = (inp) =>{
-
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
+        setFocusStore(updatedFocusStore); 
     }
     const handleBlur = (inp) =>{
-
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
+        setFocusStore(updatedFocusStore)
+         
     }
+    
     const handleSubmit = (e) =>{
 
     }
@@ -84,12 +92,15 @@ const SomeInfo = () => {
     const [focusStore, setFocusStore] = useState([false, false]); 
 
     const handleFocus = (inp) =>{
-
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
+        setFocusStore(updatedFocusStore); 
     }
-
     const handleBlur = (inp) =>{
-
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
+        setFocusStore(updatedFocusStore)
+         
     }
+    
     
     const handleSubmit = (e) =>{
 
@@ -119,16 +130,19 @@ const SomeInfo = () => {
 const ExtraInfo = () => {
     const [focusStore, setFocusStore] = useState([false, false]); 
 
-    const handleFocus = (inp) => {
-        
+    const handleFocus = (inp) =>{
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
+        setFocusStore(updatedFocusStore); 
+    }
+    const handleBlur = (inp) =>{
+        const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
+        setFocusStore(updatedFocusStore)
+         
     }
     
-    const handleBlur = (inp) =>{
-
-    }
 
     const handleSubmit = (e) => {
-        
+
     }
 
     return(
