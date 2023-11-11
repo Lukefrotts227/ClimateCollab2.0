@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'; 
 
 const BasicInfo = () => {
-    const [carChoice, setCarChoice] = usestate(''); 
+    const [carChoice, setCarChoice] = useState(''); 
+    const [milesPer, setMilesPer] = useState(-1);
 
     return(
         <>
