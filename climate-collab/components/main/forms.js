@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'; 
 
-const BasicInfo = (userId) => {
+const BasicInfo = (userId, data) => {
+    const [currentData, setCurrentData] = useState(data); 
     const [carChoice, setCarChoice] = useState(''); 
     const [fuelChoice, setFuelChoice] = useState(''); 
     const [focusStore, setFocusStore] = useState([false, false, false, false, false])
     const [milesPer, setMilesPer] = useState(-1);
-
-    useEffect(() =>{
-
-    }, []); 
+    const [isLoading, setIsLoading] = useState(false); 
 
     const handleCarChoice = (e) =>{
         e.preventDefault(); 

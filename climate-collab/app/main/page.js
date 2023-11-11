@@ -4,11 +4,40 @@ import { useSession } from "next-auth/react";
 import Greeting from "@/components/main/greeting";
 import SignOut from "@/components/universal/signout";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
 
 export default function Main(){
     const session = useSession(); 
     const [userId, setUserId] = useState(session.data.user.userId); 
+    const [data, setData] = useState({})
+
+    useEffect(() =>{
+        const grabData = async(userId) =>{
+            try{
+                const response = await fetch('/api/user/getUserData', 
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body:JSON.stringify(userId),
+                    }
+                )
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json(); 
+                setData(JSON.parse(data))
+
+            }catch(error){
+                console.error(error); 
+            }finally{
+                console.log('done'); 
+            }
+        }
+        grapData(userId); 
+
+    }, []); 
 
     return(
         <main>
