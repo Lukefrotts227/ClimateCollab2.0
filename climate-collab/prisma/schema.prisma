@@ -61,12 +61,13 @@ model VerificationRequest {
 }
 
 model Data {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId        String   @db.ObjectId
-  location      String
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
-  commuteMethod String?  @map("commute_method")
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  location    String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  vehicleData String
+  foodData    String
 }
 
 // I may have to treat them as update entrys based on time data. This may make it difficult to scale. perhaps a weekly model is best.
