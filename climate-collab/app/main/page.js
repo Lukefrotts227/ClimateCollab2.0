@@ -2,7 +2,7 @@
 
 import Greeting from "@/components/main/greeting";
 import SignOut from "@/components/universal/signout";
-import BasicInfo from "@/components/main/basicinfo";
+import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
 
 export default function Main(){
 
@@ -11,24 +11,21 @@ export default function Main(){
             <header className="h-12">
                 <SignOut />
             </header>
-            <section className = "grid grid-cols-4 grid-rows-7 gap-5">  
-                <div className="h-12 col-span-4 row-span-1">
+            <div className="h-12 col-span-4 row-span-1">
                     <Greeting />
                 </div>
-                <div className="col-span-2 row-span-2">
+            <section className = "grid grid-cols-4 grid-rows-4 gap-y-24">  
+                <div className="col-span-2 row-span-2 flex justify-center items-center">
                     <BasicInfo />
                 </div>
-                <div className="col-span-2 row-span-2">
-
+                <div className="col-span-2 row-span-2 flex justify-center items-center">
+                    <MainInfo />
                 </div>
-                <div className="col-span-2 row-span-2">
-
+                <div className="col-span-2 row-span-2 flex justify-center items-center">
+                    <SomeInfo />
                 </div>
-                <div className="col-span-2 row-span-2">
-
-                </div>
-                <div className='col-span-4 row-span-2'>
-
+                <div className="col-span-2 row-span-2 flex justify-center items-center">
+                    <ExtraInfo />
                 </div>
             </section>
         </main>

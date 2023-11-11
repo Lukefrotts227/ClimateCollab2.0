@@ -10,12 +10,13 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Climate Collab',
-  description: 'Climate Collaborator',
+  description: 'Combat Climate Change Through Collaborating',
 }
 
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions)
+
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen bg-gradient-to-tl from-green-400 to-blue-200`}> 
