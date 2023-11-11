@@ -1,10 +1,14 @@
 "use client"; 
 
+import { useSession } from "next-auth/react";
 import Greeting from "@/components/main/greeting";
 import SignOut from "@/components/universal/signout";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
+import { useState } from 'react'; 
 
 export default function Main(){
+    const session = useSession(); 
+    const [userId, setUserId] = useState(session.data.user.userId); 
 
     return(
         <main>
@@ -16,7 +20,7 @@ export default function Main(){
                 </div>
             <section className = "grid grid-cols-4 grid-rows-4 gap-y-24">  
                 <div className="col-span-2 row-span-2 flex justify-center items-center">
-                    <BasicInfo />
+                    <BasicInfo userId={userId} />
                 </div>
                 <div className="col-span-2 row-span-2 flex justify-center items-center">
                     <MainInfo />

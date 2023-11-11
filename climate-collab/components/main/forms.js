@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'; 
 
-const BasicInfo = () => {
+const BasicInfo = (userId) => {
     const [carChoice, setCarChoice] = useState(''); 
     const [fuelChoice, setFuelChoice] = useState(''); 
     const [focusStore, setFocusStore] = useState([false, false, false, false, false])
     const [milesPer, setMilesPer] = useState(-1);
+
+    useEffect(() =>{
+
+    }, []); 
 
     const handleCarChoice = (e) =>{
         e.preventDefault(); 
@@ -66,7 +70,7 @@ const BasicInfo = () => {
 
                         <div className="flex flex-col">
                             <label>How many miles do you drive per week?</label>
-                            <input className="mx-6" type="number" onFocus={() => handleFocus(2)} onBlur= {() => handleBlur(2)} />
+                            <input className="mx-6" type="number" onChange={() => handleMilesPer(e)} onFocus={() => handleFocus(2)} onBlur= {() => handleBlur(2)} />
                         </div>
                     </form>
                 </div>
