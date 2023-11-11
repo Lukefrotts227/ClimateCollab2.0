@@ -2,9 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 const BasicInfo = () => {
     const [carChoice, setCarChoice] = useState(''); 
-    const [focusStore, setFocusStore] = useState([])
+    const [focusStore, setFocusStore] = useState([false, false])
     const [milesPer, setMilesPer] = useState(-1);
+
+    const handleFocus = (inp) =>{
+        
+    }
+    const handleBlur = (inp) =>{
+         
+    }
     
+    const handleSubmit = (e) =>{
+
+    }
 
     return(
         <>
@@ -16,7 +26,7 @@ const BasicInfo = () => {
                     <form className='flex flex-col gap-3 items-center justify-center'>
                         <div className="flex flex-col">
                             <label>What kind of Car Do You Drive?</label>
-                            <select>
+                            <select onFocus={handleFocus(0)} onBlur={handleBlur(0)}>
                                 <option></option>
                                 <option></option>
                                 <option></option>
@@ -37,6 +47,17 @@ const BasicInfo = () => {
 }
 
 const MainInfo = () => {
+    const [focusStore, setFocusStore] = useState([false, false]); 
+
+    const handleFocus = (inp) =>{
+
+    }
+    const handleBlur = (inp) =>{
+
+    }
+    const handleSubmit = (e) =>{
+
+    }
 
     return(
         <>
@@ -60,6 +81,19 @@ const MainInfo = () => {
 }
 
 const SomeInfo = () => {
+    const [focusStore, setFocusStore] = useState([false, false]); 
+
+    const handleFocus = (inp) =>{
+
+    }
+
+    const handleBlur = (inp) =>{
+
+    }
+    
+    const handleSubmit = (e) =>{
+
+    }
 
     return(
         <>
@@ -83,6 +117,19 @@ const SomeInfo = () => {
 }
 
 const ExtraInfo = () => {
+    const [focusStore, setFocusStore] = useState([false, false]); 
+
+    const handleFocus = (inp) => {
+        
+    }
+    
+    const handleBlur = (inp) =>{
+
+    }
+
+    const handleSubmit = (e) => {
+        
+    }
 
     return(
         <>
