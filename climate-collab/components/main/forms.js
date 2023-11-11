@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react'; 
 
 const BasicInfo = () => {
+    const [carChoice, setCarChoice] = usestate(''); 
 
     return(
         <>
             <div className="shadow-lg bg-blue-200 rounded-2xl p-8">
                 <form className='flex flex-col gap-3 items-center justify-center'>
                     <div>
-                        <input className="mx-6"/>
+                        <label>What kind of Car Do You Drive?</label>
+                        <select>
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
                     </div>                    
-                    <label></label>
 
                     <div>
                         <label></label>
