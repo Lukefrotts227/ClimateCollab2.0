@@ -4,7 +4,7 @@ export const fetchRowBack = async (id) =>{
     try{
         const userData = await prisma.data.findMany({
             where: {
-                userId: userId,
+                userId: id,
             }
         })
         return userData; 

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { postTransBack } from "@/helpers/fetching/posting";
 
 async function handler(request){
+    console.log("made it to back"); 
     const body = await request.json(); 
     const content = body; 
 

@@ -8,11 +8,15 @@ import { useState, useEffect } from 'react';
 
 export default function Main(){
     const session = useSession(); 
-    const [userId, setUserId] = useState(session.data.user.userId); 
+    const [userId, setUserId] = useState(session.data.userId); 
     const [data, setData] = useState({})
+    console.log(session); 
+    console.log(`session object is ${session}`)
+    console.log(`user id is ${userId}`); 
 
     useEffect(() =>{
         const grabData = async(userId) =>{
+            console.log('use effect starting'); 
             try{
                 const response = await fetch('/api/user/getUserData', 
                     {
@@ -27,7 +31,9 @@ export default function Main(){
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
                 const data = await response.json(); 
-                setData(JSON.parse(data))
+                console.log(data); 
+                setData(data)
+                console.log(data); 
 
             }catch(error){
                 console.error(error); 
@@ -49,7 +55,7 @@ export default function Main(){
             </section>
             <section className = "grid grid-cols-4 grid-rows-4 gap-y-24">  
                 <div className="col-span-2 row-span-2 flex justify-center items-center">
-                    <BasicInfo userId={userId} />
+                    <BasicInfo userId={userId} data={data}/>
                 </div>
                 <div className="col-span-2 row-span-2 flex justify-center items-center">
                     <MainInfo />
