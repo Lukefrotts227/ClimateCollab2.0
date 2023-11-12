@@ -5,14 +5,23 @@ import Greeting from "@/components/main/greeting";
 import SignOut from "@/components/universal/signout";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
 import { useState, useEffect } from 'react'; 
+import { useRouter } from "next/router";
 
 export default function Main(){
     const session = useSession(); 
     const [userId, setUserId] = useState(session.data.userId); 
     const [data, setData] = useState({})
+    const router = useRouter(); 
     console.log(session); 
     console.log(`session object is ${session}`)
     console.log(`user id is ${userId}`); 
+    if(!userId){
+        router.push('/'); 
+
+        return(<div>
+            negative
+        </div>)
+    }
 
     useEffect(() =>{
         const grabData = async(userId) =>{

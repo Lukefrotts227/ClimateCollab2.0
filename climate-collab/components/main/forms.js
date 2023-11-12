@@ -61,10 +61,10 @@ const BasicInfo = (userId, data) => {
                 <div className="text-center p-3">
                     <h1 className="font-bold text-2xl ">The important information</h1>
                 </div>
-                <div className="text-center text-clip bg-gray-500 shadow-2xl rounded-md border-2 border-black">
+                <div className="text-center text-clip bg-gray-800 text-slate-50 shadow-2xl rounded-md">
                     <AnimatePresence>
                         {focusStore[0] && 
-                        <motion.p 
+                        <motion.p className='p-2 m-3'
                          initial={{ opacity: 0 }}
                          animate={{ opacity: 1 }}
                          exit={{ opacity: 0 }}>
@@ -72,7 +72,7 @@ const BasicInfo = (userId, data) => {
                         </motion.p>} 
 
                         {focusStore[1] && 
-                        <motion.p
+                        <motion.p className='p-2 m-3'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -80,7 +80,7 @@ const BasicInfo = (userId, data) => {
                         The type of fuel you use in your car is important in finding out your emissions
                         </motion.p>}
                         {focusStore[2] && 
-                        <motion.p
+                        <motion.p className='p-2 m-3'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -89,7 +89,7 @@ const BasicInfo = (userId, data) => {
                         </motion.p>}
 
                         {focusStore[3] && 
-                        <motion.p
+                        <motion.p className='p-2 m-3'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -98,38 +98,41 @@ const BasicInfo = (userId, data) => {
                         </motion.p>} 
                     </AnimatePresence>
                 </div>
-                <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400 max-w-3xl"> 
-                    <form className='flex flex-col gap-3 items-center justify-center' onSubmit={handleSubmit}>   
-                        <div className="flex flex-col">
-                            <label>What kind of Car Do You Drive?</label>
-                            <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
-                                <option value="" disabled selected hidden>{currentData.fuel || "Select a choice"}</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
-                                <option value="don't">I don't drive</option>
-                            </select>
-                        </div>        
-                        <div className="flex flex-col">
-                            <label>What kind of Fuel does it use</label>
-                            <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)}>
-                                <option value="" disabled selected hidden>{currentData.fuel || "Select a choice"}</option>
-                                <option value="gas">Gas</option>
-                                <option value="diesel">Diesel</option>
-                                <option value="electric">Electric</option>
-                            </select>
-                        </div>        
-                        <div className="flex flex-col">
-                            <label>What is the gas milage of your vehicle</label>
-                            <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlue(2)} placeholder={currentData.gasMilage || "Enter the amount"}/>
-                        </div>    
 
-                        <div className="flex flex-col">
-                            <label>How many miles do you drive per week?</label>
-                            <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={currentData.miles || "Enter the amount"}/>
-                        </div>
-                        <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md" type="submit" >Submit</button>
-                    </form>
+                <div className="flex items-center justify-center">
+                    <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400 w-96"> 
+                        <form className='flex flex-col gap-3 items-center justify-center' onSubmit={handleSubmit}>   
+                            <div className="flex flex-col">
+                                <label>What kind of Car Do You Drive?</label>
+                                <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
+                                    <option value="" disabled selected hidden>{currentData.fuel || "Select a choice"}</option>
+                                    <option></option>
+                                    <option></option>
+                                    <option></option>
+                                    <option value="don't">I don't drive</option>
+                                </select>
+                            </div>        
+                            <div className="flex flex-col">
+                                <label>What kind of Fuel does it use</label>
+                                <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)}>
+                                    <option value="" disabled selected hidden>{currentData.fuel || "Select a choice"}</option>
+                                    <option value="gas">Gas</option>
+                                    <option value="diesel">Diesel</option>
+                                    <option value="electric">Electric</option>
+                                </select>
+                            </div>        
+                            <div className="flex flex-col">
+                                <label>What is the gas milage of your vehicle</label>
+                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={currentData.gasMilage || "Enter the amount"}/>
+                            </div>    
+
+                            <div className="flex flex-col">
+                                <label>How many miles do you drive per week?</label>
+                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={currentData.miles || "Enter the amount"}/>
+                            </div>
+                            <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md" type="submit" >Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </>
