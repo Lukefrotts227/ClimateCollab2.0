@@ -1,10 +1,11 @@
 import React from 'react'; 
+import { what } from '../content/about';
 
 const Basic = () =>{
 
     return(
-        <div>
-            
+        <div className="text-center font-semibold text-md">
+            <p>{what}</p>
         </div>
     ); 
 }
