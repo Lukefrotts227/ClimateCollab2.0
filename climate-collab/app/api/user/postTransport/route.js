@@ -5,6 +5,7 @@ async function handler(request){
     console.log("made it to back"); 
     const body = await request.json(); 
     const content = body; 
+    console.log(body); 
 
     if(!content || typeof content !== 'string'){
         console.log("content not proper!!!"); 
@@ -14,7 +15,9 @@ async function handler(request){
     try{
         const data = {fuel: content.fuel, car: content.car, miles: content.miles, gasMilage: content.gasMilage}
         const userId = content.userID; 
+        console.log('posting....'); 
         const posting = await postTransBack(userId, data); 
+        console.log('posted'); 
         return NextResponse.json({message: 'success'}, {status: 200})
 
     }catch(error){

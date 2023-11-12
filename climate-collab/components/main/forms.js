@@ -8,25 +8,28 @@ const BasicInfo = (userId, data) => {
     const [focusStore, setFocusStore] = useState([false, false, false, false, false])
     const [milesPer, setMilesPer] = useState(-1);
     const [gasMilage, setGasMilage] = useState(-1); 
+    const [user, setUser] = useState(userId); 
+
+    
 
     const handleCarChoice = (e) =>{
-        e.preventDefault(); 
-        setCarChoice(e); 
+        
+        setCarChoice(e.target.value); 
     }
 
     const handleMilesPer = (e) =>{
-        e.preventDefault(); 
-        setMilesPer(e); 
+        
+        setMilesPer(e.target.value); 
     }
 
     const handleFuelChoice = (e) =>{
         e.preventDefault(); 
-        setFuelChoice(e); 
+        setFuelChoice(e.target.value); 
     }
     
     const handleGasMilage = (e) =>{
         e.preventDefault(); 
-        setGasMilage(e); 
+        setGasMilage(e.target.value); 
     }
 
     const handleFocus = (inp) =>{
@@ -40,7 +43,9 @@ const BasicInfo = (userId, data) => {
     }
     
     const handleSubmit = async (e) => {
-        const content = {fuel: fuelChoice, car: carChoice, miles: milesPer, gasMilage: gasMilage, userId: userId}; 
+        e.preventDefault();
+        console.log('started function'); 
+        const content = {fuel: fuelChoice, car: carChoice, miles: milesPer, gasMilage: gasMilage, userId: user}; 
         try{
             const response = await fetch('/api/user/postTransport', { 
                 method: 'POST', 
@@ -48,7 +53,15 @@ const BasicInfo = (userId, data) => {
                 body: JSON.stringify(content),
 
             })
+            if(!response.ok){
+                throw new Error(respones.statusText);
+            }else{
+                const data = await response.json(); 
+                console.log(data); 
+                return data;
+            }
         }catch(error){
+            console.error(error); 
             throw error; 
         }finally{
             console.log('success'); 
@@ -106,9 +119,9 @@ const BasicInfo = (userId, data) => {
                                 <label>What kind of Car Do You Drive?</label>
                                 <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
                                     <option value="" disabled selected hidden>{currentData.fuel || "Select a choice"}</option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
+                                    <option value="car">Car</option>
+                                    <option value="suv">Suv</option>
+                                    <option value="truck">Truck</option>
                                     <option value="don't">I don't drive</option>
                                 </select>
                             </div>        
@@ -130,7 +143,7 @@ const BasicInfo = (userId, data) => {
                                 <label>How many miles do you drive per week?</label>
                                 <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={currentData.miles || "Enter the amount"}/>
                             </div>
-                            <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md" type="submit" >Submit</button>
+                            <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
                         </form>
                     </div>
                 </div>

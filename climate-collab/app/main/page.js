@@ -5,7 +5,7 @@ import Greeting from "@/components/main/greeting";
 import SignOut from "@/components/universal/signout";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
 import { useState, useEffect } from 'react'; 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Main(){
     const session = useSession(); 
