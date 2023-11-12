@@ -71,7 +71,7 @@ const BasicInfo = (userId, data) => {
                         </div>        
                         <div className="flex flex-col">
                             <label>What kind of Fuel does it use</label>
-                            <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(0)}>
+                            <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)}>
                                 <option>Gas</option>
                                 <option>Diesel</option>
                                 <option>Electric</option>
