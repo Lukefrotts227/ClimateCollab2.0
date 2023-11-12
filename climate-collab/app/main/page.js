@@ -35,7 +35,7 @@ export default function Main(){
                 console.log('done'); 
             }
         }
-        grapData(userId); 
+        grabData(userId); 
 
     }, []); 
 
