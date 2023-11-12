@@ -12,7 +12,7 @@ async function handler(request){
     }
 
     try{
-        const data = {fuel: content.fuel, car: content.car, miles: content.miles}
+        const data = {fuel: content.fuel, car: content.car, miles: content.miles, gasMilage: content.gasMilage}
         const userId = content.userID; 
         const posting = await postTransBack(userId, data); 
         return NextResponse.json({message: 'success'}, {status: 200})
