@@ -8,7 +8,7 @@ const postTransBack = async (userId, data) =>{
     )
     if(find){
         const update = await prisma.VehicleData.update({    
-            where:{ userId }, 
+            where:{ userId: userId }, 
             data: {
                 vehicleData:data,
             },

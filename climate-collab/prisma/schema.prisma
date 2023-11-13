@@ -62,13 +62,13 @@ model VerificationRequest {
 
 model VehicleData {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId      String   @db.ObjectId
+  userId      String   @db.ObjectId @unique
   vehicleData String
 }
 
 model FoodData {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId 
-  userId      String   @db.ObjectId
+  userId      String   @db.ObjectId @unique
   foodData    String
 }
 
