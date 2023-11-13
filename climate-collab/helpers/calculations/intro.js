@@ -13,7 +13,11 @@ const vehicleCalcSingle = (data) =>{
     // so we normalize then we return an object that contains ther perecent value along with our exact calculation
     // These are lightweight calculations that can be done with js and put anywwhere
 
-
+    let fuel = data.fuel || standardFuel;
+    let car = data.car || standardCar;
+    let miles = data.miles || standardMiles;
+    let gasMilage = data.gasMilage || standarMilesPerGallon;
+    
 
 }
 
