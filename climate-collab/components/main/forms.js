@@ -1,14 +1,44 @@
 import React, { useState, useEffect } from 'react'; 
 import { motion, AnimatePresence } from 'framer-motion';
 
-const BasicInfo = (userId, data) => {
-    const [currentData, setCurrentData] = useState(data); 
+const BasicInfo = (userId) => {
+    const [data, setData] = useState('data'); 
     const [carChoice, setCarChoice] = useState(''); 
     const [fuelChoice, setFuelChoice] = useState(''); 
     const [focusStore, setFocusStore] = useState([false, false, false, false, false])
     const [milesPer, setMilesPer] = useState(-1);
     const [gasMilage, setGasMilage] = useState(-1); 
     const [user, setUser] = useState(userId); 
+    useEffect(() =>{
+        const grabData = async(userId) =>{
+            console.log('use effect starting'); 
+            try{
+                const response = await fetch('/api/user/getUserData/vehicle', 
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body:JSON.stringify(userId),
+                    }
+                )
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json(); 
+                console.log(data); 
+                setData(data)
+                console.log(data); 
+
+            }catch(error){
+                console.error(error); 
+            }finally{
+                console.log('done'); 
+            }
+        }
+        grabData(userId); 
+
+    }, []); 
 
     
 
@@ -47,7 +77,7 @@ const BasicInfo = (userId, data) => {
         console.log('started function'); 
         const content = {fuel: fuelChoice, car: carChoice, miles: milesPer, gasMilage: gasMilage, userId: user}; 
         try{
-            const response = await fetch('/api/user/postTransport', { 
+            const response = await fetch('/api/user/post/vehicle', { 
                 method: 'POST', 
                 headers: {'Content-Type': 'application/json'}, 
                 body: JSON.stringify(content),
@@ -119,7 +149,7 @@ const BasicInfo = (userId, data) => {
                             <div className="flex flex-col">
                                 <label>What kind of Car Do You Drive?</label>
                                 <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
-                                    <option value="" disabled selected hidden>{currentData.fuel || "Select a choice"}</option>
+                                    <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
                                     <option value="car">Car</option>
                                     <option value="suv">Suv</option>
                                     <option value="truck">Truck</option>
@@ -129,7 +159,7 @@ const BasicInfo = (userId, data) => {
                             <div className="flex flex-col">
                                 <label>What kind of Fuel does it use</label>
                                 <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)}>
-                                    <option value="" disabled selected hidden>{currentData.fuel || "Select a choice"}</option>
+                                    <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
                                     <option value="gas">Gas</option>
                                     <option value="diesel">Diesel</option>
                                     <option value="electric">Electric</option>
@@ -137,12 +167,12 @@ const BasicInfo = (userId, data) => {
                             </div>        
                             <div className="flex flex-col">
                                 <label>What is the gas milage of your vehicle</label>
-                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={currentData.gasMilage || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={data.gasMilage || "Enter the amount"}/>
                             </div>    
 
                             <div className="flex flex-col">
                                 <label>How many miles do you drive per week?</label>
-                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={currentData.miles || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={data.miles || "Enter the amount"}/>
                             </div>
                             <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
                         </form>

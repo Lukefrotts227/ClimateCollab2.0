@@ -1,8 +1,8 @@
 import prisma from "../prisma/prisma";
 
-export const fetchRowBack = async (id) =>{
+export const fetchRowBackVehicle = async (id) =>{
     try{
-        const userData = await prisma.data.findMany({
+        const userData = await prisma.VehicleData.findMany({
             where: {
                 userId: id,
             }

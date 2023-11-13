@@ -23,36 +23,6 @@ export default function Main(){
         </div>)
     }
 
-    useEffect(() =>{
-        const grabData = async(userId) =>{
-            console.log('use effect starting'); 
-            try{
-                const response = await fetch('/api/user/getUserData', 
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body:JSON.stringify(userId),
-                    }
-                )
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                const data = await response.json(); 
-                console.log(data); 
-                setData(data)
-                console.log(data); 
-
-            }catch(error){
-                console.error(error); 
-            }finally{
-                console.log('done'); 
-            }
-        }
-        grabData(userId); 
-
-    }, []); 
 
     return(
         <main>
@@ -64,7 +34,7 @@ export default function Main(){
             </section>
             <section className = "grid grid-cols-4 grid-rows-4 gap-y-24">  
                 <div className="col-span-2 row-span-2 flex justify-center items-center">
-                    <BasicInfo userId={userId} data={data}/>
+                    <BasicInfo userId={userId} />
                 </div>
                 <div className="col-span-2 row-span-2 flex justify-center items-center">
                     <MainInfo />
