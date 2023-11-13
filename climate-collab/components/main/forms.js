@@ -54,11 +54,12 @@ const BasicInfo = (userId, data) => {
 
             })
             if(!response.ok){
-                throw new Error(respones.statusText);
+                //console.log(response); 
+                throw new Error(response.statusText);
             }else{
                 const data = await response.json(); 
                 console.log(data); 
-                return data;
+                return data;9
             }
         }catch(error){
             console.error(error); 

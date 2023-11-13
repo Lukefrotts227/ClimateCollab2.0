@@ -1,17 +1,29 @@
 import prisma from "../prisma/prisma";
 
 const postTransBack = async (userId, data) =>{
-    const update = await prisma.data.upsert({
+
+    const find = await prisma.VehicleData.findUnique({
+        where: {userId: userId},
+    },
+    )
+    if(find){
+        const update = await prisma.VehicleData.update({    
             where:{ userId}, 
-            update: {
+            data: {
                 vehicleData:data,
             },
-            create:{
+        },
+        )
+
+    }else{
+        const create = await prisma.VehicleData.create({
+            data:{
                 userId:userId,
                 vehicleData:data,
             }
-        },
-    )
+        })
+
+    }
 }
 
 

@@ -7,16 +7,12 @@ async function handler(request){
     const content = body; 
     console.log(body); 
 
-    if(!content || typeof content !== 'string'){
-        console.log("content not proper!!!"); 
-        return NextResponse.json({ error: 'Internal Server Error'}, { status: 500}); 
-    }
-
     try{
         const data = {fuel: content.fuel, car: content.car, miles: content.miles, gasMilage: content.gasMilage}
-        const userId = content.userID; 
+        const userId = content.userId; 
+        console.log(userId)
         console.log('posting....'); 
-        const posting = await postTransBack(userId, data); 
+        const posting = await postTransBack(userId.userId, JSON.stringify(data)); 
         console.log('posted'); 
         return NextResponse.json({message: 'success'}, {status: 200})
 

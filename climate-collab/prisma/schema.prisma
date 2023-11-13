@@ -60,13 +60,15 @@ model VerificationRequest {
   @@unique([identifier, token])
 }
 
-model Data {
+model VehicleData {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   userId      String   @db.ObjectId
-  location    String
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
   vehicleData String
+}
+
+model FoodData {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId 
+  userId      String   @db.ObjectId
   foodData    String
 }
 
