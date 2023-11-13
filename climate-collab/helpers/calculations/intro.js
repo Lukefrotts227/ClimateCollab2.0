@@ -15,9 +15,18 @@ const vehicleCalcSingle = (data) =>{
 
     let fuel = data.fuel || standardFuel;
     let car = data.car || standardCar;
-    let miles = data.miles || standardMiles;
-    let gasMilage = data.gasMilage || standarMilesPerGallon;
     
+    if(data.miles === -1){
+        let miles = standardMiles;
+    }else{
+        let miles = data.miles;
+    }
+    if(data.gasMilage === -1){
+        let gasMilage = standarMilesPerGallon;
+    }else{
+        let gasMilage = data.gasMilage;
+    }
+
 
 }
 

@@ -10,7 +10,7 @@ async function handler(request){
     
 
     try{
-        const rowData = await fetchRowBackVehicle(body); 
+        const rowData = await fetchRowBackVehicle(body.userId); 
         console.log('made it to the good place so posting was good!'); 
         return NextResponse.json(rowData); 
 

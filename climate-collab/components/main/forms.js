@@ -6,6 +6,7 @@ const BasicInfo = (userId) => {
     const [carChoice, setCarChoice] = useState(''); 
     const [fuelChoice, setFuelChoice] = useState(''); 
     const [focusStore, setFocusStore] = useState([false, false, false, false, false])
+    const [anyFocus, setAnyFocus] = useState(false);
     const [milesPer, setMilesPer] = useState(-1);
     const [gasMilage, setGasMilage] = useState(-1); 
     const [user, setUser] = useState(userId); 
@@ -25,10 +26,10 @@ const BasicInfo = (userId) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
-                const data = await response.json(); 
-                console.log(data); 
-                setData(data)
-                console.log(data); 
+                const data = await response.json();
+                const final = JSON.parse(data[0].vehicleData); 
+                
+                setData(final); 
 
             }catch(error){
                 console.error(error); 
@@ -65,10 +66,12 @@ const BasicInfo = (userId) => {
     const handleFocus = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
         setFocusStore(updatedFocusStore); 
+        setAnyFocus(true); 
     }
     const handleBlur = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
         setFocusStore(updatedFocusStore)
+        setAnyFocus(false); 
          
     }
     
@@ -102,13 +105,10 @@ const BasicInfo = (userId) => {
     return(
         <>
             <div className="">
-                <div className="text-center p-3">
-                    <h1 className="font-bold text-2xl ">The important information</h1>
-                </div>
-                <div className="text-center text-clip bg-gray-800 text-slate-50 shadow-2xl rounded-md">
+                <div className={`text-center text-clip ${anyFocus ? 'bg-gray-800 text-slate-50 rounded-md text-sm' : ''} h-10 m-7 p-2`}>
                     <AnimatePresence>
                         {focusStore[0] && 
-                        <motion.p className='p-2 m-3'
+                        <motion.p className=''
                          initial={{ opacity: 0 }}
                          animate={{ opacity: 1 }}
                          exit={{ opacity: 0 }}>
@@ -116,7 +116,7 @@ const BasicInfo = (userId) => {
                         </motion.p>} 
 
                         {focusStore[1] && 
-                        <motion.p className='p-2 m-3'
+                        <motion.p className=''
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -124,7 +124,7 @@ const BasicInfo = (userId) => {
                         The type of fuel you use in your car is important in finding out your emissions
                         </motion.p>}
                         {focusStore[2] && 
-                        <motion.p className='p-2 m-3'
+                        <motion.p className=''
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -133,7 +133,7 @@ const BasicInfo = (userId) => {
                         </motion.p>}
 
                         {focusStore[3] && 
-                        <motion.p className='p-2 m-3'
+                        <motion.p className=''
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -145,7 +145,10 @@ const BasicInfo = (userId) => {
 
                 <div className="flex items-center justify-center">
                     <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400 w-96"> 
-                        <form className='flex flex-col gap-3 items-center justify-center' onSubmit={handleSubmit}>   
+                        <form className='flex flex-col gap-3 items-center justify-center' onSubmit={handleSubmit}>  
+                            <div className="text-center pb-5">
+                                <h1 className="font-bold text-2xl ">Vehicle Information</h1>
+                            </div>
                             <div className="flex flex-col">
                                 <label>What kind of Car Do You Drive?</label>
                                 <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
@@ -185,14 +188,17 @@ const BasicInfo = (userId) => {
 
 const MainInfo = () => {
     const [focusStore, setFocusStore] = useState([false, false]); 
+    const [anyFocus, setAnyFocus] = useState(false);
 
     const handleFocus = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
         setFocusStore(updatedFocusStore); 
+        setAnyFocus(true); 
     }
     const handleBlur = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
         setFocusStore(updatedFocusStore)
+        setAnyFocus(false); 
          
     }
     
@@ -223,14 +229,17 @@ const MainInfo = () => {
 
 const SomeInfo = () => {
     const [focusStore, setFocusStore] = useState([false, false]); 
+    const [anyFocus, setAnyFocus] = useState(false);
 
     const handleFocus = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
         setFocusStore(updatedFocusStore); 
+        setAnyFocus(true);
     }
     const handleBlur = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
         setFocusStore(updatedFocusStore)
+        setAnyFocus(false); 
          
     }
     
@@ -262,14 +271,17 @@ const SomeInfo = () => {
 
 const ExtraInfo = () => {
     const [focusStore, setFocusStore] = useState([false, false]); 
+    const [anyFocus, setAnyFocus] = useState(false);
 
     const handleFocus = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? true : item);
         setFocusStore(updatedFocusStore); 
+        setAnyFocus(true);
     }
     const handleBlur = (inp) =>{
         const updatedFocusStore = focusStore.map((item, i) => i === inp ? false : item);
         setFocusStore(updatedFocusStore)
+        setAnyFocus(false); 
          
     }
     

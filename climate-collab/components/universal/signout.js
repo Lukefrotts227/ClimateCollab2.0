@@ -9,8 +9,8 @@ const SignOut = () =>{
         sessionStorage.clear(); 
     }
     return(
-        <div>
-            <button className="text-2xl p-3 bg-white text-black shadow-lg rounded-md hover:bg-black hover:text-white" onClick={exitFun}>Sign Out</button>
+        <div className="">
+            <button className="w-full h-full text-2xl p-3 bg-white text-black shadow-lg rounded-md hover:bg-black hover:text-white" onClick={exitFun}>Sign Out</button>
         </div>
         ); 
 }

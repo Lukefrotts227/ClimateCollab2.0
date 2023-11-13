@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import Greeting from "@/components/main/greeting";
 import SignOut from "@/components/universal/signout";
+import Navbar from "@/components/universal/navbar";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
 import { useState, useEffect } from 'react'; 
 import { useRouter } from "next/navigation";
@@ -26,23 +27,28 @@ export default function Main(){
 
     return(
         <main>
-            <header className="h-12">
-                <SignOut />
+            <header className="flex flex-row h-16 mb-6">
+                <div className="w-2/12">
+                    <SignOut />
+                </div>
+                <div className="w-10/12">
+                    <Navbar type={0} />
+                </div>
             </header>
-            <section className="h-12 col-span-4 row-span-1">
+            <section className="">
                 <Greeting />
             </section>
-            <section className = "grid grid-cols-4 grid-rows-4 gap-y-24">  
-                <div className="col-span-2 row-span-2 flex justify-center items-center">
+            <section className = "grid grid-cols-2 grid-rows-2 gap-y-24">  
+                <div className="col-span-1 row-span-1 flex justify-center">
                     <BasicInfo userId={userId} />
                 </div>
-                <div className="col-span-2 row-span-2 flex justify-center items-center">
+                <div className="col-span-1 row-span-1 flex justify-center">
                     <MainInfo />
                 </div>
-                <div className="col-span-2 row-span-2 flex justify-center items-center">
+                <div className="col-span-1 row-span-1 flex justify-center">
                     <SomeInfo />
                 </div>
-                <div className="col-span-2 row-span-2 flex justify-center items-center">
+                <div className="col-span-1 row-span-1 flex justify-center">
                     <ExtraInfo />
                 </div>
             </section>

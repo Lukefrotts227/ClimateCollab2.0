@@ -15,9 +15,16 @@ const Greeting = () => {
     }
 
     return(
-    <div>
-        <div className='text-2xl text-center'>
+    <div className="mb-10">
+        <div className='text-4xl text-center'>
             <h1>Welcome {session.data.user.name}</h1>
+        </div>
+        <div className="text-3xl text-center">
+            <h2>This is the Main page of the Climate Collab</h2>
+        </div>
+
+        <div>
+            
         </div>
     </div>
     )
