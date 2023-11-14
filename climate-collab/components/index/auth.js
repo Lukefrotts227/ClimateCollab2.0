@@ -1,11 +1,14 @@
+"use client"; 
+
+import { useSession } from "next-auth/react";
+
 import Link from "next/link";
 import React from 'react';
-import { getServerSession } from "next-auth";
 
 const Auth = ( ) => {
-    const session = false; 
+    const session = useSession(); 
     console.log('here'); 
-    console.log(getServerSession())
+    const auth = session.data.authenticated;
     
     return(
         <div className={``}>
