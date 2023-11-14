@@ -76,4 +76,4 @@ const vehicleCalcSingle = (data) =>{
 
 }
 
-export { vehicleCalc }; 
+export { vehicleCalcSingle }; 

@@ -8,8 +8,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
 // lazy load to see animation and for performance
-import dynamic from 'next/dynamic'
-const PersonalDisplay = dynamic(() => import('@/components/main/personalDisplay'), { ssr: false }); 
+//import dynamic from 'next/dynamic'
+//const PersonalDisplay = dynamic(() => import('@/components/main/personalDisplay'), { ssr: false }); 
 
 export default function Main(){
     const session = useSession(); 
@@ -58,7 +58,7 @@ export default function Main(){
                     <ExtraInfo />
                 </div>
             </section>
-            
+
             <footer>
 
             </footer>
