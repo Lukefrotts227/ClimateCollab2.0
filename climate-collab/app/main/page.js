@@ -7,6 +7,10 @@ import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/form
 import { useState, useEffect } from 'react'; 
 import { useRouter } from "next/navigation";
 
+// lazy load to see animation and for performance
+import dynamic from 'next/dynamic'
+const PersonalDisplay = dynamic(() => import('@/components/main/personalDisplay'), { ssr: false }); 
+
 export default function Main(){
     const session = useSession(); 
     const [userId, setUserId] = useState(session.data.userId); 
@@ -54,6 +58,10 @@ export default function Main(){
                     <ExtraInfo />
                 </div>
             </section>
+            
+            <footer>
+
+            </footer>
         </main>
     )
 }
