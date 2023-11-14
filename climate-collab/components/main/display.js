@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 const PersonalDisplay = ({ userId, oddity, setOddity }) =>{
     const [amount, setAmount ] = useState(0);
     const [final, setFinal] = useState(0); 
+    setOddity(1223); 
 
     // so I can refetch and rerender the component when needed
     useEffect(() => {
@@ -34,7 +35,7 @@ const PersonalDisplay = ({ userId, oddity, setOddity }) =>{
     return(
         <div>
             <motion.div className="w-0 h-10">
-
+                {final}
             </motion.div>
 
         </div>

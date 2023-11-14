@@ -2,6 +2,7 @@ import prisma from "../prisma/prisma";
 
 const postTransBack = async (userId, data) =>{
 
+    console.log(userId); 
     const find = await prisma.VehicleData.findUnique({
         where: {userId: userId},
     },
