@@ -6,6 +6,7 @@ import Navbar from "@/components/universal/navbar";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
 import { useState, useEffect } from 'react'; 
 import { useRouter } from "next/navigation";
+import { PersonalDisplay } from "@/components/main/display";
 
 // lazy load to see animation and for performance
 //import dynamic from 'next/dynamic'
@@ -61,7 +62,7 @@ export default function Main(){
             </section>
 
             <footer>
-
+                <PersonalDisplay userId={userId} oddity={oddity} setOddity={setOddity}/>
             </footer>
         </main>
     )
