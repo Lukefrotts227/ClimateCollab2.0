@@ -223,12 +223,15 @@ const MainInfo = () => {
             <div>
                 <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400">
                     <form className='flex flex-col gap-3 items-center justify-center'>
-                        <div>
+                        <div className="text-center pb-5">
+                            <h1 className="font-bold text-2xl ">Food Information</h1>
+                        </div>
+                        <div className="flex flex-col"> 
+                            <label></label>
                             <input className="mx-6"/>
                         </div>                    
-                        <label></label>
 
-                        <div>
+                        <div className="flex flex-col">
                             <label></label>
                             <input className="mx-6"/>
                         </div>

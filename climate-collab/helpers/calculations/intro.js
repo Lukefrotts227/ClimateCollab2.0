@@ -3,10 +3,10 @@
 
 import { normalizeVehicle } from './filter.js';
 
-const vCalc = (car, fuel, mile, milesPerGallon) => {
+const vCalc = (car, fuel, miles, gasMilage) => {
     let emissionsFactor; 
 
-    switch(fuelType) {
+    switch(fuel) {
         case 'gas':
             emissionsFactor = 8.887; // kg CO2 per gallon for gasoline
             break;
@@ -14,7 +14,7 @@ const vCalc = (car, fuel, mile, milesPerGallon) => {
             emissionsFactor = 10.16; // kg CO2 per gallon for diesel
             break;
         case 'electric':
-            emissionsFactor = 0; // Simplified for electric (actual calculation would be more complex)
+            emissionsFactor = .5; 
             break;
         default:
             return 'Invalid fuel type';
@@ -24,8 +24,8 @@ const vCalc = (car, fuel, mile, milesPerGallon) => {
         'suv': 0.8, // 20% less efficient than a car
         'truck': 0.7 // 30% less efficient than a car
     };
-    let efficiencyModifier = vehicleTypeEfficiency[carType] || 1;
-    let emissions = (milesPerWeek / (gasMileage * efficiencyModifier)) * emissionsFactor
+    let efficiencyModifier = vehicleTypeEfficiency[car] || 1;
+    let emissions = (miles / (gasMileage * efficiencyModifier)) * emissionsFactor
     return emissions; 
 
 }
