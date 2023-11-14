@@ -2,7 +2,6 @@
 
 import { useSession } from "next-auth/react";
 import Greeting from "@/components/main/greeting";
-import SignOut from "@/components/universal/signout";
 import Navbar from "@/components/universal/navbar";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
 import { useState, useEffect } from 'react'; 
@@ -11,11 +10,17 @@ import { useRouter } from "next/navigation";
 export default function Main(){
     const session = useSession(); 
     const [userId, setUserId] = useState(session.data.userId); 
-    const [data, setData] = useState({})
+    
     const router = useRouter(); 
     console.log(session); 
     console.log(`session object is ${session}`)
     console.log(`user id is ${userId}`); 
+    if(!session){
+        router.push('/'); 
+        return(<div>
+            negative
+        </div>)
+    }
     if(!userId){
         router.push('/'); 
 
@@ -28,10 +33,7 @@ export default function Main(){
     return(
         <main>
             <header className="flex flex-row h-16 mb-6">
-                <div className="w-2/12">
-                    <SignOut />
-                </div>
-                <div className="w-10/12">
+                <div className="w-full">
                     <Navbar type={0} />
                 </div>
             </header>
