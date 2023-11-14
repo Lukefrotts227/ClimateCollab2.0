@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import { motion, AnimatePresence } from 'framer-motion';
 
-const BasicInfo = (userId) => {
+const BasicInfo = ({ userId, oddity, setOddity }) => {
     const [data, setData] = useState('data'); 
     const [carChoice, setCarChoice] = useState(''); 
     const [fuelChoice, setFuelChoice] = useState(''); 

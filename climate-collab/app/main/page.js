@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 export default function Main(){
     const session = useSession(); 
     const [userId, setUserId] = useState(session.data.userId); 
+    const [oddity, setOddity] = useState(0); 
     
     const router = useRouter(); 
     console.log(session); 
@@ -46,7 +47,7 @@ export default function Main(){
             </section>
             <section className = "grid grid-cols-2 grid-rows-2 gap-y-24">  
                 <div className="col-span-1 row-span-1 flex justify-center">
-                    <BasicInfo userId={userId} />
+                    <BasicInfo userId={userId} oddity={oddity} setOddity={setOddity}/>
                 </div>
                 <div className="col-span-1 row-span-1 flex justify-center">
                     <MainInfo />
