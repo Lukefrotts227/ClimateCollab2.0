@@ -32,6 +32,12 @@ const vCalc = (car, fuel, mile, milesPerGallon) => {
 
 
 const vehicleCalcSingle = (data) =>{
+    if(data.car === "don't"){
+        return {
+            exactEmissions: 0,
+            emissionPercent: 0,
+        }
+    }
     const avgPerc = .41; 
     const standardCar = 'car'  // the most average car
     const standardFuel = 'gas' // the most average fuel
@@ -45,16 +51,18 @@ const vehicleCalcSingle = (data) =>{
 
     let fuel = data.fuel || standardFuel;
     let car = data.car || standardCar;
+    let miles; 
+    let gasMilage; 
     
     if(data.miles === -1){
-        let miles = standardMiles;
+        miles = standardMiles;
     }else{
-        let miles = data.miles;
+        miles = data.miles;
     }
     if(data.gasMilage === -1){
-        let gasMilage = standarMilesPerGallon;
+        gasMilage = standarMilesPerGallon;
     }else{
-        let gasMilage = data.gasMilage;
+        gasMilage = data.gasMilage;
     }
  
     

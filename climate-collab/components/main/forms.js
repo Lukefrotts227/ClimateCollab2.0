@@ -46,6 +46,9 @@ const BasicInfo = ({ userId, oddity, setOddity }) => {
     const handleCarChoice = (e) =>{
         
         setCarChoice(e.target.value); 
+        if(carChoice === "don't"){
+            console.log('do it'); 
+        }
     }
 
     const handleMilesPer = (e) =>{
