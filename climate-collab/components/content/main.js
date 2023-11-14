@@ -1,0 +1,1 @@
+export const greetingExplain= "Here you can enter data that can be used to calculate your carbon footprint. It has been seprated into many sections. You only have to enter the data the you know and the rest will be adjusted for. When you learn someting new or somehthing changes we encourage you to update it!"; 

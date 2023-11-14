@@ -4,6 +4,7 @@
 
 const vehicleCalcSingle = (data) =>{
     const avg = 24024; // the average amount of emission in kg we use this as a baseline for the total calc 
+    const avgPerc = .42; 
     const standardCar = 'car'  // the most average car
     const standardFuel = 'gas' // the most average fuel
     const standardMiles = 260 // the most average miles
@@ -26,6 +27,7 @@ const vehicleCalcSingle = (data) =>{
     }else{
         let gasMilage = data.gasMilage;
     }
+    
 
 
 }

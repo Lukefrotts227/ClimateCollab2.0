@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { useSession } from 'next-auth/react'; 
 import { useRouter } from 'next/navigation'; 
+import { greetingExplain } from '../content/main';
 const Greeting = () => {
     const session = useSession(); 
     const router = useRouter(); 
@@ -23,9 +24,12 @@ const Greeting = () => {
             <h2>This is the Main page of the Climate Collab</h2>
         </div>
 
-        <div>
-            
+        <div className="flex justify-center">
+            <div className=" bg-gradient-to-tl from-slate-50 to-slate-200 shadow-lg rounded-full font-bold text-black text-center m-5 py-8 px-20 text-lg mx-24">
+                <p>{greetingExplain}</p>
+            </div>
         </div>
+
     </div>
     )
 }

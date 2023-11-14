@@ -13,13 +13,17 @@ const Navbar = () =>{
     }
     
         return(
-            <nav className="w-full h-full bg-gray-400 shadow-lg rounded-md p-3">
+            <nav className="w-full h-full bg-gray-400 shadow-lg rounded-md flex flex-row justify-between gap-4 p-8">
                 <div onClick={exitFun}>
                     <div>
                         <button>SignOut</button>
                     </div>
                 </div>
-
+                <Link href="/about">
+                    <div>
+                        <button>About</button>
+                    </div>
+                </Link>
             </nav>
             ); 
 }

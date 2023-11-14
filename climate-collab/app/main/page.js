@@ -32,7 +32,7 @@ export default function Main(){
 
     return(
         <main>
-            <header className="flex flex-row h-16 mb-6">
+            <header className="flex flex-row h-6 mb-12">
                 <div className="w-full">
                     <Navbar type={0} />
                 </div>

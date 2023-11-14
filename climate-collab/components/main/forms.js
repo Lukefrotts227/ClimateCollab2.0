@@ -74,6 +74,15 @@ const BasicInfo = (userId) => {
         setAnyFocus(false); 
          
     }
+    const checker = (value) => {
+        if(value === -1){
+            return false;
+        }
+        if (!value){
+            return false;
+        }
+        return value;
+    }
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -152,7 +161,7 @@ const BasicInfo = (userId) => {
                             <div className="flex flex-col">
                                 <label>What kind of Car Do You Drive?</label>
                                 <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
-                                    <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
+                                    <option value="" disabled selected hidden>{data.car || "Select a choice"}</option>
                                     <option value="car">Car</option>
                                     <option value="suv">Suv</option>
                                     <option value="truck">Truck</option>
@@ -170,12 +179,12 @@ const BasicInfo = (userId) => {
                             </div>        
                             <div className="flex flex-col">
                                 <label>What is the gas milage of your vehicle</label>
-                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={data.gasMilage || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={()=> checker(data.gasMilage) || "Enter the amount"}/>
                             </div>    
 
                             <div className="flex flex-col">
                                 <label>How many miles do you drive per week?</label>
-                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={data.miles || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={()=> checker(data.miles) || "Enter the amount"}/>
                             </div>
                             <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
                         </form>
