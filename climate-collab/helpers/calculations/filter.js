@@ -5,7 +5,7 @@ export const normalizeVehicle = (standard, base, max, newPerc) =>{
     let percent; 
     // for every variable jumper of emissions we add 1 percent. The difference is between standard and newPerc
     // we need to add the difference to the base
-    let diff = newPerc - base;
+    let diff = base - newPerc;
     let add = diff/jumper;
     percent = standard + add;
 
