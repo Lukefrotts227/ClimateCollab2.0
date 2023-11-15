@@ -9,7 +9,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
     const [anyFocus, setAnyFocus] = useState(false);
     const [milesPer, setMilesPer] = useState(-1);
     const [gasMilage, setGasMilage] = useState(-1); 
-    const [diable, setDisable] = useState(false);
+    const [disabled, setDisabled] = useState(false);
     useEffect(() =>{
         const grabData = async(id) =>{
             console.log('use effect starting'); 
@@ -51,6 +51,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
         setCarChoice(e.target.value); 
         if(carChoice === "don't"){
             console.log('do it'); 
+            setDisabled(true); 
         }
     }
 
@@ -119,6 +120,10 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
             gasMiilage = data.gasMilage;
         }else{
             gasMiilage = gasMilage;
+        }
+        if(carChoice === "don't"){
+            milesPer = 0; 
+            gasMilage = 0; 
         }
         const content = {fuel: fuelChoice, car: carChoice, miles: milesPer, gasMilage: gasMilage, userId: user}; 
         try{
@@ -204,7 +209,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
                             </div>        
                             <div className="flex flex-col">
                                 <label>What kind of Fuel does it use</label>
-                                <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)}>
+                                <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)} disabled={disabled}>
                                     <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
                                     <option value="gas">Gas</option>
                                     <option value="diesel">Diesel</option>
@@ -213,12 +218,12 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
                             </div>        
                             <div className="flex flex-col">
                                 <label>What is the gas milage of your vehicle</label>
-                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"} disabled={disabled}/>
                             </div>    
 
                             <div className="flex flex-col">
                                 <label>How many miles do you drive per week?</label>
-                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"} disabled={disabled}/>
                             </div>
                             <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
                         </form>

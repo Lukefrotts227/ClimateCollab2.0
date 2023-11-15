@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'
 
 const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
-    const [amount, setAmount ] = useState(0);
     const [final, setFinal] = useState(0); 
     
 
@@ -35,9 +34,12 @@ const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
 
     return(
         <div>
-            <motion.div className="w-0 h-10">
-                {final.exactEmissions}
-            </motion.div>
+            <div className="w-full h-6 bg-gray">
+                <motion.div className="h-full bg-blue-500" 
+                initial={{ width: 0}}
+                animate={{ width: `${final.emissionPercent}` }}
+                transition={{ duration: .6 }}/>
+            </div>
 
         </div>
     )
