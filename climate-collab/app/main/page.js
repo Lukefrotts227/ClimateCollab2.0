@@ -20,16 +20,18 @@ export default function Main(){
     const router = useRouter(); 
     console.log(session); 
     console.log(`session object is ${session}`)
-    console.log(`user id is ${userId}`); 
+
+    useEffect(() => {
+        console.log("what i testing now"); 
+        console.log(session); 
+        console.log(session.data); 
+        console.log(session.data.userId); 
+        setUserId(session.data.userId);
+        console.log(userId);
+    }, []);
+
     if(!session){
         router.push('/'); 
-        return(<div>
-            negative
-        </div>)
-    }
-    if(!userId){
-        router.push('/'); 
-
         return(<div>
             negative
         </div>)
@@ -48,7 +50,7 @@ export default function Main(){
             </section>
             <section className = "grid grid-cols-2 grid-rows-2 gap-y-24">  
                 <div className="col-span-1 row-span-1 flex justify-center">
-                    <BasicInfo userId={userId} oddity={oddity} setOddity={setOddity}/>
+                    <BasicInfo userId={userId} setUserId={setUserId} oddity={oddity} setOddity={setOddity}/>
                 </div>
                 <div className="col-span-1 row-span-1 flex justify-center">
                     <MainInfo />
@@ -62,7 +64,7 @@ export default function Main(){
             </section>
 
             <footer>
-                <PersonalDisplayVehicle userId={userId} oddity={oddity} setOddity={setOddity}/>
+                <PersonalDisplayVehicle userId={userId} setUserId={setUserId} oddity={oddity} setOddity={setOddity}/>
             </footer>
         </main>
     )

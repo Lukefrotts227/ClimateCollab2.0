@@ -38,12 +38,13 @@ const vehicleCalcSingle = (data) =>{
             emissionPercent: 0,
         }
     }
-    const avgPerc = .41; 
+    const avgPerc = 41; 
     const standardCar = 'car'  // the most average car
     const standardFuel = 'gas' // the most average fuel
     const standardMiles = 260 // the most average miles
     const standarMilesPerGallon = 25 // the most average miles per gallon
     const avg = vCalc(standardCar, standardFuel, standardMiles, standarMilesPerGallon);
+    console.log(avg); 
 
     // we need to take into account the fact that the user may not enter everything
     // so we normalize then we return an object that contains ther perecent value along with our exact calculation

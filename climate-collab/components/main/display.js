@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'
 
-const PersonalDisplayVehicle = ({ userId, oddity, setOddity }) =>{
+const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
     const [amount, setAmount ] = useState(0);
     const [final, setFinal] = useState(0); 
     

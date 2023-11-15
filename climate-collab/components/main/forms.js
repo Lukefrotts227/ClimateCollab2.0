@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'; 
 import { motion, AnimatePresence } from 'framer-motion';
 
-const BasicInfo = ({ userId, oddity, setOddity }) => {
-    const [data, setData] = useState('data'); 
+const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
+    const [data, setData] = useState(''); 
     const [carChoice, setCarChoice] = useState(''); 
     const [fuelChoice, setFuelChoice] = useState(''); 
     const [focusStore, setFocusStore] = useState([false, false, false, false, false])
     const [anyFocus, setAnyFocus] = useState(false);
     const [milesPer, setMilesPer] = useState(-1);
     const [gasMilage, setGasMilage] = useState(-1); 
-    const [user, setUser] = useState(userId); 
+    const [diable, setDisable] = useState(false);
     useEffect(() =>{
-        const grabData = async(userId) =>{
+        const grabData = async(id) =>{
             console.log('use effect starting'); 
+            console.log(id); 
             try{
                 const response = await fetch('/api/user/getUserData/vehicle', 
                     {
@@ -20,13 +21,14 @@ const BasicInfo = ({ userId, oddity, setOddity }) => {
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body:JSON.stringify(userId),
+                        body:JSON.stringify(id),
                     }
                 )
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
                 const data = await response.json();
+                console.log(data);
                 const final = JSON.parse(data[0].vehicleData); 
                 
                 setData(final); 
@@ -211,12 +213,12 @@ const BasicInfo = ({ userId, oddity, setOddity }) => {
                             </div>        
                             <div className="flex flex-col">
                                 <label>What is the gas milage of your vehicle</label>
-                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={()=> checker(data.gasMilage) || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"}/>
                             </div>    
 
                             <div className="flex flex-col">
                                 <label>How many miles do you drive per week?</label>
-                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={()=> checker(data.miles) || "Enter the amount"}/>
+                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"}/>
                             </div>
                             <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
                         </form>
