@@ -25,7 +25,7 @@ const vCalc = (car, fuel, miles, gasMilage) => {
         'truck': 0.7 // 30% less efficient than a car
     };
     let efficiencyModifier = vehicleTypeEfficiency[car] || 1;
-    let emissions = (miles / (gasMileage * efficiencyModifier)) * emissionsFactor
+    let emissions = (miles / (gasMilage * efficiencyModifier)) * emissionsFactor
     return emissions; 
 
 }

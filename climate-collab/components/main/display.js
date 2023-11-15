@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'
 
-const PersonalDisplay = ({ userId, oddity, setOddity }) =>{
+const PersonalDisplayVehicle = ({ userId, oddity, setOddity }) =>{
     const [amount, setAmount ] = useState(0);
     const [final, setFinal] = useState(0); 
-    setOddity(1223); 
+    
 
     // so I can refetch and rerender the component when needed
     useEffect(() => {
@@ -30,16 +30,17 @@ const PersonalDisplay = ({ userId, oddity, setOddity }) =>{
                 console.log('done'); 
             }
         }
+        grabCalc(userId);
     }, [oddity]);
 
     return(
         <div>
             <motion.div className="w-0 h-10">
-                {final}
+                {final.exactEmissions}
             </motion.div>
 
         </div>
     )
 }
 
-export { PersonalDisplay }; 
+export { PersonalDisplayVehicle }; 

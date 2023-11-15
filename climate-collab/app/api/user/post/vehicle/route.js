@@ -12,7 +12,7 @@ async function handler(request){
         const userId = content.userId; 
         console.log(userId)
         console.log('posting....'); 
-        const posting = await postTransBack(userId.userId, JSON.stringify(data)); 
+        const posting = await postTransBack(userId, JSON.stringify(data)); 
         console.log('posted'); 
         return NextResponse.json({message: 'success'}, {status: 200})
 

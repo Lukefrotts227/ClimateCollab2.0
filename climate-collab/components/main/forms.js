@@ -38,6 +38,7 @@ const BasicInfo = ({ userId, oddity, setOddity }) => {
             }
         }
         grabData(userId); 
+        setOddity(123); 
 
     }, []); 
 
@@ -79,17 +80,44 @@ const BasicInfo = ({ userId, oddity, setOddity }) => {
     }
     const checker = (value) => {
         if(value === -1){
+            console.log('this'); 
             return false;
         }
         if (!value){
+            console.log('that'); 
             return false;
         }
+        console.log('then'); 
         return value;
     }
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('started function'); 
+        let fuel; 
+        let car; 
+        let miles; 
+        let gasMiilage; 
+        if(fuelChoice === ''){
+            fuel=data.fuel; 
+        }else{
+            fuel = fuelChoice; 
+        }
+        if(carChoice === ''){
+            car=data.car;
+        }else{
+            car = carChoice; 
+        }
+        if(milesPer === -1){
+            miles = data.miles;
+        }else{
+            miles = milesPer;
+        }
+        if(gasMilage === -1){
+            gasMiilage = data.gasMilage;
+        }else{
+            gasMiilage = gasMilage;
+        }
         const content = {fuel: fuelChoice, car: carChoice, miles: milesPer, gasMilage: gasMilage, userId: user}; 
         try{
             const response = await fetch('/api/user/post/vehicle', { 
@@ -111,6 +139,7 @@ const BasicInfo = ({ userId, oddity, setOddity }) => {
             throw error; 
         }finally{
             console.log('success'); 
+            setOddity(124)
         }
     }
 
