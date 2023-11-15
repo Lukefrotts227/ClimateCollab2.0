@@ -100,7 +100,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
         let fuel; 
         let car; 
         let miles; 
-        let gasMiilage; 
+        let gas; 
         if(fuelChoice === ''){
             fuel=data.fuel; 
         }else{
@@ -117,15 +117,15 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
             miles = milesPer;
         }
         if(gasMilage === -1){
-            gasMiilage = data.gasMilage;
+            gas = data.gasMilage;
         }else{
-            gasMiilage = gasMilage;
+            gas = gasMilage;
         }
         if(carChoice === "don't"){
-            milesPer = 0; 
-            gasMilage = 0; 
+            miles = 0; 
+            gas = 0; 
         }
-        const content = {fuel: fuelChoice, car: carChoice, miles: milesPer, gasMilage: gasMilage, userId: user}; 
+        const content = {fuel: fuel, car: car, miles: miles, gasMilage: gas, userId: user}; 
         try{
             const response = await fetch('/api/user/post/vehicle', { 
                 method: 'POST', 
