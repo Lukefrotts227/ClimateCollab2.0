@@ -30,6 +30,14 @@ const vCalc = (car, fuel, miles, gasMilage) => {
 
 }
 
+const vehicleCalcMulti = (data) =>{
+    let mine; 
+    for(let i = 0; i < data.length; i++){
+        mine[i] = vehicleCalcSingle(data[i]);
+    }
+    return mine; 
+}
+
 
 const vehicleCalcSingle = (data) =>{
     if(data.car === "don't"){
@@ -85,4 +93,4 @@ const vehicleCalcSingle = (data) =>{
 
 }
 
-export { vehicleCalcSingle }; 
+export { vehicleCalcSingle, vehicleCalcMulti }; 

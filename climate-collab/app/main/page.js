@@ -16,7 +16,7 @@ export default function Main(){
     const session = useSession(); 
     const [userId, setUserId] = useState(session.data.userId); 
     const [oddity, setOddity] = useState(0); 
-    
+     
     const router = useRouter(); 
     console.log(session); 
     console.log(`session object is ${session}`)
@@ -63,8 +63,8 @@ export default function Main(){
                 </div>
             </section>
 
-            <footer className="flex justify-center items-center ">
-                <PersonalDisplayVehicle userId={userId} setUserId={setUserId} oddity={oddity} setOddity={setOddity}/>
+            <footer className="m-8 ">
+                <PersonalDisplayVehicle userId={userId} setUserId={setUserId} oddity={oddity} setOddity={setOddity} />
             </footer>
         </main>
     )

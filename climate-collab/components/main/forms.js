@@ -155,7 +155,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
         }finally{
             console.log('success'); 
             setSubmissionAnimate(false);
-            setOddity(124);
+            setOddity(Math.random(190));
         }
     }
 
@@ -203,12 +203,13 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
                 <div className="flex items-center justify-center">
                     <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400 w-96 relative"> 
                         <AlertDialog.Root>
-                            <AlertDialog.Trigger>
-                                <button className="absolute top-0 right-0 mb-2 mt-1 mr-2 bg-slate-50 text-zinc-900 p-1 rounded-xl hover:text-slate-50 hover:bg-zinc-900">More Info</button>
+                            <AlertDialog.Trigger className="absolute top-0 right-0 mb-2 mt-1 mr-2 bg-slate-50 text-zinc-900 p-1 rounded-xl hover:text-slate-50 hover:bg-zinc-900">
+                                More Info
                             </AlertDialog.Trigger>
                             <AlertDialog.Portal>
                                 <AlertDialog.Overlay className="fixed inset-0 bg-black opacity-30" />
-                                <AlertDialog.Content className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-50 text-zinc-900 p-4 rounded-xl shadow-xl text-center">
+                                <div className="fixed inset-0 flex items-center justify-center">
+                                <AlertDialog.Content className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-50 text-zinc-900 p-4 rounded-xl shadow-xl text-center max-h-screen overflow-auto">
                                     <AlertDialog.Title className="text-2xl font-bold">More Info</AlertDialog.Title>
                                     <AlertDialog.Description className="text-lg p-2 m-4"> 
                                         {moreVehicleInfo}
@@ -217,6 +218,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
                                         Close
                                     </AlertDialog.Cancel>
                                 </AlertDialog.Content>
+                                </div>
                             </AlertDialog.Portal>
                         </AlertDialog.Root>
                         <form className='flex flex-col gap-3 items-center justify-center mt-6' onSubmit={handleSubmit}>  
