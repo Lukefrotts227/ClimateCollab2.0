@@ -35,8 +35,9 @@ const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
 
     return(
         <div>
-           <Progress.Root className="h-2 w-96 rounded-full bg-gray-300">
-               <Progress.Bar className="rounded-full bg-green-500" style={{width: `${final}%`}}/>
+            <Progress.Root className="h-2 w-96 rounded-full bg-gray-300">
+                <Progress.Label className="text-black text-center">{Math.round(final.emissionPercent)}%</Progress.Label>
+                <Progress.Bar className="rounded-full bg-green-500" style={{width: `${Math.round(final.emissionPercent)}%`}}/>
             </Progress.Root>   
         </div>
     )
