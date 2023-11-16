@@ -24,6 +24,12 @@ const Navbar = () =>{
                         <button>About</button>
                     </div>
                 </Link>
+
+                <Link href="/visualize">
+                    <div className="text-2xl hover:font-bold hover:text-3xl hover:text-green-500">
+                        <button>Visualize</button>
+                    </div>
+                </Link>
             </nav>
             ); 
 }

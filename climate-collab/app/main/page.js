@@ -30,7 +30,7 @@ export default function Main(){
         console.log(userId);
     }, []);
 
-    if(!session){
+    if(!session.data){
         router.push('/'); 
         return(<div>
             negative
