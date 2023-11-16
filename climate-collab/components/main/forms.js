@@ -218,42 +218,42 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
                                     </AlertDialog.Cancel>
                                 </AlertDialog.Content>
                             </AlertDialog.Portal>
-                            <form className='flex flex-col gap-3 items-center justify-center mt-6' onSubmit={handleSubmit}>  
-                                <div className="text-center pb-5">
-                                    <h1 className="font-bold text-2xl ">Vehicle Information</h1>
-                                </div>
-                                <div className="flex flex-col">
-                                    <label>What kind of Car Do You Drive?</label>
-                                    <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
-                                        <option value="" disabled selected hidden>{data.car || "Select a choice"}</option>
-                                        <option value="car">Car</option>
-                                        <option value="suv">Suv</option>
-                                        <option value="truck">Truck</option>
-                                        <option value="don't">I don't drive</option>
-                                    </select>
-                                </div>        
-                                <div className="flex flex-col">
-                                    <label>What kind of Fuel does it use</label>
-                                    <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)} disabled={disabled}>
-                                        <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
-                                        <option value="gas">Gas</option>
-                                        <option value="diesel">Diesel</option>
-                                        <option value="electric">Electric</option>
-                                    </select>
-                                </div>        
-                                <div className="flex flex-col">
-                                    <label>What is the gas milage of your vehicle</label>
-                                    <input className="mx-6" type="number" step="0.1" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"} disabled={disabled}/>
-                                </div>    
-
-                                <div className="flex flex-col">
-                                    <label>How many miles do you drive per week?</label>
-                                    <input className="mx-6" type="number" step="0.1" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"} disabled={disabled}/>
-                                </div>
-                                <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
-                                {submissionAnimate && <FaSpinner className="animate-spin"/>}
-                            </form>
                         </AlertDialog.Root>
+                        <form className='flex flex-col gap-3 items-center justify-center mt-6' onSubmit={handleSubmit}>  
+                            <div className="text-center pb-5">
+                                <h1 className="font-bold text-2xl ">Vehicle Information</h1>
+                            </div>
+                            <div className="flex flex-col">
+                                <label>What kind of Car Do You Drive?</label>
+                                <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
+                                    <option value="" disabled selected hidden>{data.car || "Select a choice"}</option>
+                                    <option value="car">Car</option>
+                                    <option value="suv">Suv</option>
+                                    <option value="truck">Truck</option>
+                                    <option value="don't">I don't drive</option>
+                                </select>
+                            </div>        
+                            <div className="flex flex-col">
+                                <label>What kind of Fuel does it use</label>
+                                <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)} disabled={disabled}>
+                                    <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
+                                    <option value="gas">Gas</option>
+                                    <option value="diesel">Diesel</option>
+                                    <option value="electric">Electric</option>
+                                </select>
+                            </div>        
+                            <div className="flex flex-col">
+                                <label>What is the gas milage of your vehicle</label>
+                                <input className="mx-6" type="number" step="0.1" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"} disabled={disabled}/>
+                            </div>    
+
+                            <div className="flex flex-col">
+                                <label>How many miles do you drive per week?</label>
+                                <input className="mx-6" type="number" step="0.1" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"} disabled={disabled}/>
+                            </div>
+                            <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
+                            {submissionAnimate && <FaSpinner className="animate-spin"/>}
+                        </form>
                     </div>
                 </div>
             </div>
