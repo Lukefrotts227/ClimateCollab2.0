@@ -7,7 +7,7 @@ import React from 'react';
 
 const Auth = ( ) => {
     const session = useSession(); 
-    console.log('here'); 
+    //console.log('here'); 
     //const auth = session.data.authenticated;
     
     return(

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'; 
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaSpinner } from 'react-icons/fa';
+import { moreVehicleInfo } from '../content/main';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
 const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
     const [data, setData] = useState(''); 
@@ -12,6 +14,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
     const [gasMilage, setGasMilage] = useState(-1); 
     const [disabled, setDisabled] = useState(false);
     const [submissionAnimate, setSubmissionAnimate] = useState(false);
+
     useEffect(() =>{
         const grabData = async(id) =>{
             console.log('use effect starting'); 
@@ -198,42 +201,59 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
                 </div>
 
                 <div className="flex items-center justify-center">
-                    <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400 w-96"> 
-                        <form className='flex flex-col gap-3 items-center justify-center' onSubmit={handleSubmit}>  
-                            <div className="text-center pb-5">
-                                <h1 className="font-bold text-2xl ">Vehicle Information</h1>
-                            </div>
-                            <div className="flex flex-col">
-                                <label>What kind of Car Do You Drive?</label>
-                                <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
-                                    <option value="" disabled selected hidden>{data.car || "Select a choice"}</option>
-                                    <option value="car">Car</option>
-                                    <option value="suv">Suv</option>
-                                    <option value="truck">Truck</option>
-                                    <option value="don't">I don't drive</option>
-                                </select>
-                            </div>        
-                            <div className="flex flex-col">
-                                <label>What kind of Fuel does it use</label>
-                                <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)} disabled={disabled}>
-                                    <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
-                                    <option value="gas">Gas</option>
-                                    <option value="diesel">Diesel</option>
-                                    <option value="electric">Electric</option>
-                                </select>
-                            </div>        
-                            <div className="flex flex-col">
-                                <label>What is the gas milage of your vehicle</label>
-                                <input className="mx-6" type="number" step="0.1" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"} disabled={disabled}/>
-                            </div>    
+                    <div className="shadow-lg bg-blue-200 rounded-2xl p-8 border-2 border-blue-400 w-96 relative"> 
+                        <AlertDialog.Root>
+                            <AlertDialog.Trigger>
+                                <button className="absolute top-0 right-0 mb-2 mt-1 mr-2 bg-slate-50 text-zinc-900 p-1 rounded-xl hover:text-slate-50 hover:bg-zinc-900">More Info</button>
+                            </AlertDialog.Trigger>
+                            <AlertDialog.Portal>
+                                <AlertDialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+                                <AlertDialog.Content className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-50 text-zinc-900 p-4 rounded-xl shadow-xl text-center">
+                                    <AlertDialog.Title className="text-2xl font-bold">More Info</AlertDialog.Title>
+                                    <AlertDialog.Description className="text-lg p-2 m-4"> 
+                                        {moreVehicleInfo}
+                                    </AlertDialog.Description>
+                                    <AlertDialog.Cancel className="bg-slate-700 text-slate-50 hover:bg-slate-50 hover:text-slate-700 rounded-full p-2">
+                                        Close
+                                    </AlertDialog.Cancel>
+                                </AlertDialog.Content>
+                            </AlertDialog.Portal>
+                            <form className='flex flex-col gap-3 items-center justify-center mt-6' onSubmit={handleSubmit}>  
+                                <div className="text-center pb-5">
+                                    <h1 className="font-bold text-2xl ">Vehicle Information</h1>
+                                </div>
+                                <div className="flex flex-col">
+                                    <label>What kind of Car Do You Drive?</label>
+                                    <select onChange={handleCarChoice} onFocus={() => handleFocus(0)} onBlur={() => handleBlur(0)}>
+                                        <option value="" disabled selected hidden>{data.car || "Select a choice"}</option>
+                                        <option value="car">Car</option>
+                                        <option value="suv">Suv</option>
+                                        <option value="truck">Truck</option>
+                                        <option value="don't">I don't drive</option>
+                                    </select>
+                                </div>        
+                                <div className="flex flex-col">
+                                    <label>What kind of Fuel does it use</label>
+                                    <select onChange={handleFuelChoice} onFocus={() => handleFocus(1)} onBlur={() => handleBlur(1)} disabled={disabled}>
+                                        <option value="" disabled selected hidden>{data.fuel || "Select a choice"}</option>
+                                        <option value="gas">Gas</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="electric">Electric</option>
+                                    </select>
+                                </div>        
+                                <div className="flex flex-col">
+                                    <label>What is the gas milage of your vehicle</label>
+                                    <input className="mx-6" type="number" step="0.1" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"} disabled={disabled}/>
+                                </div>    
 
-                            <div className="flex flex-col">
-                                <label>How many miles do you drive per week?</label>
-                                <input className="mx-6" type="number" step="0.1" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"} disabled={disabled}/>
-                            </div>
-                            <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
-                            {submissionAnimate && <FaSpinner className="animate-spin"/>}
-                        </form>
+                                <div className="flex flex-col">
+                                    <label>How many miles do you drive per week?</label>
+                                    <input className="mx-6" type="number" step="0.1" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"} disabled={disabled}/>
+                                </div>
+                                <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
+                                {submissionAnimate && <FaSpinner className="animate-spin"/>}
+                            </form>
+                        </AlertDialog.Root>
                     </div>
                 </div>
             </div>

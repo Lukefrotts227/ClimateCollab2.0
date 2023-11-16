@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'; 
-import { ProgressBar } from '@radix-ui/react-progress';
+import * as Progress from '@radix-ui/react-progress';
 
 const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
     const [final, setFinal] = useState(0); 
@@ -35,7 +35,7 @@ const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
 
     return(
         <div>
-            <ProgressBar className="w-1/2 h-20" value={final.emissionPercent} max={100}/>
+           
         </div>
     )
 }
