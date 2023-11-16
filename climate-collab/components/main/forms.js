@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaSpinner } from 'react-icons/fa';
 
 const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
     const [data, setData] = useState(''); 
@@ -10,11 +11,13 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
     const [milesPer, setMilesPer] = useState(-1);
     const [gasMilage, setGasMilage] = useState(-1); 
     const [disabled, setDisabled] = useState(false);
+    const [submissionAnimate, setSubmissionAnimate] = useState(false);
     useEffect(() =>{
         const grabData = async(id) =>{
             console.log('use effect starting'); 
             console.log(id); 
             try{
+                
                 const response = await fetch('/api/user/getUserData/vehicle', 
                     {
                         method: 'POST',
@@ -36,6 +39,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
             }catch(error){
                 console.error(error); 
             }finally{
+                
                 console.log('done'); 
             }
         }
@@ -96,6 +100,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSubmissionAnimate(true); 
         console.log('started function'); 
         let fuel; 
         let car; 
@@ -125,7 +130,7 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
             miles = 0; 
             gas = 0; 
         }
-        const content = {fuel: fuel, car: car, miles: miles, gasMilage: gas, userId: user}; 
+        const content = {fuel: fuel, car: car, miles: miles, gasMilage: gas, userId: userId}; 
         try{
             const response = await fetch('/api/user/post/vehicle', { 
                 method: 'POST', 
@@ -146,7 +151,8 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
             throw error; 
         }finally{
             console.log('success'); 
-            setOddity(124)
+            setSubmissionAnimate(false);
+            setOddity(124);
         }
     }
 
@@ -218,14 +224,15 @@ const BasicInfo = ({ userId, setUserId, oddity, setOddity }) => {
                             </div>        
                             <div className="flex flex-col">
                                 <label>What is the gas milage of your vehicle</label>
-                                <input className="mx-6" type="number" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"} disabled={disabled}/>
+                                <input className="mx-6" type="number" step="0.1" onChange={handleGasMilage} onFocus={() => handleFocus(2)} onBlur={() => handleBlur(2)} placeholder={checker(data.gasMilage) || "Enter the amount"} disabled={disabled}/>
                             </div>    
 
                             <div className="flex flex-col">
                                 <label>How many miles do you drive per week?</label>
-                                <input className="mx-6" type="number" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"} disabled={disabled}/>
+                                <input className="mx-6" type="number" step="0.1" onChange={handleMilesPer} onFocus={() => handleFocus(3)} onBlur= {() => handleBlur(3)} placeholder={checker(data.miles) || "Enter the amount"} disabled={disabled}/>
                             </div>
                             <button className="bg-white hover:bg-black text-black hover:text-white rounded-2xl shadow-md px-4 py-2" type="submit" >Submit</button>
+                            {submissionAnimate && <FaSpinner className="animate-spin"/>}
                         </form>
                     </div>
                 </div>

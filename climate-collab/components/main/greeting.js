@@ -2,6 +2,8 @@ import React from 'react';
 import { useSession } from 'next-auth/react'; 
 import { useRouter } from 'next/navigation'; 
 import { greetingExplain } from '../content/main';
+import { LuSprout } from "react-icons/lu";
+
 const Greeting = () => {
     const session = useSession(); 
     const router = useRouter(); 
@@ -25,9 +27,13 @@ const Greeting = () => {
         </div>
 
         <div className="flex justify-center">
-            <div className=" bg-gradient-to-tl from-slate-50 to-slate-200 shadow-lg rounded-full font-bold text-black text-center m-5 py-8 px-20 text-lg mx-24">
+            <div className=" w-5/12 bg-gradient-to-tl from-slate-50 to-slate-200 shadow-lg rounded-full font-bold text-black text-center m-8 p-10 text-lg mx-24">
                 <p>{greetingExplain}</p>
             </div>
+        </div>
+
+        <div className="flex justify-center">
+            <LuSprout size={112} />
         </div>
 
     </div>

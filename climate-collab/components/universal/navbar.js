@@ -13,14 +13,14 @@ const Navbar = () =>{
     }
     
         return(
-            <nav className="w-full h-full bg-gray-400 shadow-lg rounded-md flex flex-row justify-between gap-4 p-8">
+            <nav className="w-full h-full bg-gradient-to-tl from-gray-300 to-slate-300 shadow-lg rounded-md flex flex-row justify-between items-center gap-4 px-40 mb-2 pb-1">
                 <div onClick={exitFun}>
-                    <div>
+                    <div className="text-2xl hover:font-bold hover:text-3xl hover:text-green-500">
                         <button>SignOut</button>
                     </div>
                 </div>
                 <Link href="/about">
-                    <div>
+                    <div className="text-2xl hover:font-bold hover:text-3xl hover:text-green-500">
                         <button>About</button>
                     </div>
                 </Link>

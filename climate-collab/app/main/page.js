@@ -40,9 +40,9 @@ export default function Main(){
 
     return(
         <main>
-            <header className="flex flex-row h-6 mb-12">
+            <header className="flex flex-row mb-12">
                 <div className="w-full">
-                    <Navbar type={0} />
+                    <Navbar />
                 </div>
             </header>
             <section className="">
@@ -63,7 +63,7 @@ export default function Main(){
                 </div>
             </section>
 
-            <footer>
+            <footer className="flex justify-center items-center ">
                 <PersonalDisplayVehicle userId={userId} setUserId={setUserId} oddity={oddity} setOddity={setOddity}/>
             </footer>
         </main>
