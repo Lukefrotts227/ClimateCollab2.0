@@ -17,13 +17,15 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions)
 
-  return (
+  return (  
     <html lang="en">
       <body className={`${inter.className} min-h-screen bg-gradient-to-tl from-green-400 to-blue-200`}> 
+        
           <SessionProvider session={session}>
             {children}
           </SessionProvider>
-        </body>
+         
+      </body>
     </html>
   )
 }

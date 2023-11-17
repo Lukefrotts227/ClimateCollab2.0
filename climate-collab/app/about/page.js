@@ -1,4 +1,4 @@
-"use client"
+"use client"; 
 import Basic from "@/components/about/basic";
 
 export default function About(){
