@@ -6,8 +6,14 @@ async function handler(request){
 
     try{
         const data = await fetchAllVehicle(); 
+        console.log('here is the data'); 
         console.log(data); 
-        return NextResponse.json({message: "testing"}, {status:200}); 
+        let dataArr = [];
+        for(let i = 0; i < data.length; i++){
+            dataArr.push(JSON.parse(data[i].vehicleData)); 
+        }
+        const calc = vehicleCalcMulti(dataArr);
+        return NextResponse.json(calc, {status:200}); 
     }catch(error){
         console.error(error);
         return NextResponse.json({error: "Internal Server Error"}, {status: 500}); 

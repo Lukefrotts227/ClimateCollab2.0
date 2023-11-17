@@ -35,7 +35,7 @@ const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
 
     return(
         <div>
-            <h1 className="text-2xl font-bold text-center pb-5">Vehicle</h1>
+            <h1>Personal</h1>
             <Progress.Root 
             value={Math.round(final.emissionPercent)} 
             max={100} 
@@ -51,6 +51,7 @@ const PersonalDisplayVehicle = ({ userId, setUserId,  oddity, setOddity }) =>{
 }
 
 const NetDisplayVehicle = ({ oddity, setOddity }) =>{
+    const [final, setFinal] = useState(0);
     useEffect (() => {
         const grabCalc = async() =>{
             try{
@@ -73,7 +74,24 @@ const NetDisplayVehicle = ({ oddity, setOddity }) =>{
                 console.log('done'); 
             }
         }
+        grabCalc();     
     }, [oddity]);
+
+    return(
+        <div>
+            <h1>Group</h1>
+           <Progress.Root 
+            value={Math.round(final.emissionPercent)} 
+            max={100} 
+            className="relative h-6 w-full overflow-hidden bg-gray-200 rounded-full"
+            >
+                <Progress.Indicator 
+                className="absolute bg-blue-600 h-full"
+                style={{ width: `${Math.round(final.emissionPercent)}%`, transition: 'width 0.5s ease-in-out' }}
+                />
+            </Progress.Root>
+        </div>
+    );
 }
 
 export { PersonalDisplayVehicle, NetDisplayVehicle }; 

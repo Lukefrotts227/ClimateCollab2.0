@@ -6,18 +6,24 @@ import Navbar from "@/components/universal/navbar";
 import { BasicInfo, MainInfo, SomeInfo, ExtraInfo } from "@/components/main/forms";
 import { useState, useEffect } from 'react'; 
 import { useRouter } from "next/navigation";
-import { PersonalDisplayVehicle } from "@/components/main/display";
+import { PersonalDisplayVehicle, NetDisplayVehicle } from "@/components/main/display";
 
 // lazy load to see animation and for performance
 //import dynamic from 'next/dynamic'
 //const PersonalDisplay = dynamic(() => import('@/components/main/personalDisplay'), { ssr: false }); 
 
 export default function Main(){
+    const router = useRouter(); 
     const session = useSession(); 
+    if(!session.data){
+        router.push('/'); 
+        return(<div>
+            negative
+        </div>)
+    }
     const [userId, setUserId] = useState(session.data.userId); 
     const [oddity, setOddity] = useState(0); 
      
-    const router = useRouter(); 
     console.log(session); 
     console.log(`session object is ${session}`)
 
@@ -30,12 +36,6 @@ export default function Main(){
         console.log(userId);
     }, []);
 
-    if(!session.data){
-        router.push('/'); 
-        return(<div>
-            negative
-        </div>)
-    }
 
 
     return(
@@ -64,7 +64,9 @@ export default function Main(){
             </section>
 
             <footer className="m-8 ">
+                <h1 className="text-2xl font-bold text-center pb-5">Vehicle</h1>
                 <PersonalDisplayVehicle userId={userId} setUserId={setUserId} oddity={oddity} setOddity={setOddity} />
+                <NetDisplayVehicle oddity={oddity} setOddity={setOddity} />
             </footer>
         </main>
     )

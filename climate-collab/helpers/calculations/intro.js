@@ -31,11 +31,25 @@ const vCalc = (car, fuel, miles, gasMilage) => {
 }
 
 const vehicleCalcMulti = (data) =>{
-    let mine; 
+    let mine =[]; 
     for(let i = 0; i < data.length; i++){
         mine[i] = vehicleCalcSingle(data[i]);
     }
-    return mine; 
+    let emissionPercent=0; 
+    let exactEmissions; 
+    let totalEmissions=0;
+    for(let i = 0; i < mine.length; i++){
+        emissionPercent += mine[i].emissionPercent;
+        totalEmissions += mine[i].exactEmissions; 
+    }
+    emissionPercent = emissionPercent / mine.length;
+    exactEmissions = totalEmissions / mine.length;
+
+    return {
+        exactEmissions: exactEmissions,
+        emissionPercent: emissionPercent,
+        totalEmissions: totalEmissions,
+    }
 }
 
 
