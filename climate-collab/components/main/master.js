@@ -13,8 +13,8 @@ const ModeSwap01 = ({ mode, setMode }) =>{
     }
 
     return(
-        <div>
-            <ComboBox>
+        <div className= 'flex justify-center items-center'>
+            <ComboBox className = "flex flex-col gap-3">
                 <Label>Swap The Mode</Label>
                 <Input value={selectedMode} onChange={handleModeSwap} />
                 <Button>
