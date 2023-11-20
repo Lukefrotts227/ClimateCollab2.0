@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { PersonalDisplayVehicle, NetDisplayVehicle } from "@/components/main/display";
 import { ModeSwap01 } from "@/components/main/master";
+import { MdArrowRightAlt } from "react-icons/md";
 
 // lazy load to see animation and for performance
 //import dynamic from 'next/dynamic'
@@ -51,7 +52,9 @@ export default function Main(){
                 <Greeting />
             </section>
 
-            <section>
+            <section className="flex flex-row m-8">
+                <h1 className="text-xl p-4">You can swap the modes to determine the information you wish to explore at the moment</h1>
+                <MdArrowRightAlt className="mx-2" size={66} /> 
                 <ModeSwap01 mode={mode} setMode={setMode} />
             </section>
 

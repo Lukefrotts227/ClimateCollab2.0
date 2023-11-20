@@ -4,6 +4,9 @@ import { useRouter } from 'next/navigation';
 import { greetingExplain } from '../content/main';
 import { LuSprout } from "react-icons/lu";
 
+import { Forum } from 'next/font/google';
+const forum = Forum({ subsets: ['latin'], weight: "400" });
+
 const Greeting = () => {
     const session = useSession(); 
     const router = useRouter(); 
@@ -19,7 +22,7 @@ const Greeting = () => {
 
     return(
     <div className="mb-10">
-        <div className='text-4xl text-center'>
+        <div className={`text-6xl text-center pb-8 ${forum.className}`}>
             <h1>Welcome {session.data.user.name}</h1>
         </div>
         <div className="text-3xl text-center">
